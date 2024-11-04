@@ -2,6 +2,7 @@ package com.project.infrastructure.persistent.mapper;
 
 import com.project.infrastructure.persistent.po.StrategyAward;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface IStrategyAwardMapper {
 
     List<StrategyAward> queryStrategyAwardList();
 
+    List<StrategyAward> queryStrategyAwardListByStrategyId(@Param("strategy_id") Long strategyId);
 }
