@@ -1,7 +1,9 @@
 package com.project.infrastructure;
 
 import com.project.domain.strategy.service.armory.IStrategyArmory;
+import com.project.domain.strategy.service.armory.IStrategyDispatch;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,34 +24,21 @@ public class StrategyArmoryTest {
     @Resource
     private IStrategyArmory strategyArmory;
 
-    @Test
+    @Resource
+    private IStrategyDispatch strategyDispatch;
+
+    @Before
     public void strategyArmoryTest(){
-        strategyArmory.assembleLotteryStrategy(100001L);
+        boolean result = strategyArmory.assembleLotteryStrategy(100001L);
+        log.info("测试结果：{}", result);
     }
 
     @Test
     public void getAssembleRandomVal(){
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
-        log.info("测试结果:{} - 奖品ID值", strategyArmory.getRandomAwardId(100001L));
+        //4000:102,103 5000:104,105,106,107 6000:106,107,108,109
+        log.info("测试结果:{} - 4000策略配置", strategyDispatch.getRandomAwardId(100001L,"4000:102,103"));
+        log.info("测试结果:{} - 5000策略配置", strategyDispatch.getRandomAwardId(100001L,"5000:104,105,106,107"));
+        log.info("测试结果:{} - 6000策略配置", strategyDispatch.getRandomAwardId(100001L,"6000:106,107,108,109"));
     }
 
 }

@@ -15,4 +15,5 @@ public interface IStrategyRuleMapper {
 
     List<StrategyRule> queryStrategyRuleList();
 
+    StrategyRule queryStrategyRule(StrategyRule strategyRuleReq);
 }
